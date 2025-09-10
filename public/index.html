@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pump.fun Dashboard</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <style>
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+    th { background-color: #f2f2f2; }
+  </style>
+</head>
+<body>
+  <h1>Pump.fun Token Dashboard</h1>
+  <table id="tokenTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Symbol</th>
+        <th>Mint</th>
+        <th>Price (USD)</th>
+        <th>Graduation %</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    const socket = io();
+    const tbody = document.querySelector('#tokenTable tbody');
+
+    socket.on('newToken', (token) => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${token.name}</td>
+        <td>${token.symbol}</td>
+        <td>${token.mint}</td>
+        <td>${token.price}</td>
+        <td>${token.score}</td>
+      `;
+      tbody.prepend(row); // newest at top
+    });
+  </script>
+</body>
+</html>

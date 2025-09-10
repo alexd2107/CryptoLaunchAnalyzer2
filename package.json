@@ -1,0 +1,15 @@
+{
+  "name": "pump-tracker",
+  "version": "1.0.0",
+  "description": "Real-time Pump.fun token tracker using PumpPortal + Moralis API",
+  "main": "analyzer.js",
+  "type": "module",
+  "scripts": {
+    "start": "node analyzer.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "node-fetch": "^3.3.0",
+    "ws": "^8.13.0"
+  }
+}
